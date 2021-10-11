@@ -26,11 +26,12 @@
 <meta property="og:description" content="Springboot学习笔记一、实例1：使用Springboot输出“Hello World！”1、pom.xml1234567&lt;!--Web；springboot会自动配置web环境（配置Tomcat、WebMVC、Validator、JSON等）--&gt;&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://giscloud.ltd/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Users/DELL/AppData/Roaming/Typora/typora-user-images/image-20210402140237285.png">
-<meta property="og:image" content="https://giscloud.ltd/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Users/DELL/AppData/Roaming/Typora/typora-user-images/image-20210402153749623.png">
-<meta property="og:image" content="https://giscloud.ltd/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Users/DELL/AppData/Roaming/Typora/typora-user-images/image-20210402173713205.png">
-<meta property="og:image" content="https://giscloud.ltd/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Users/DELL/AppData/Roaming/Typora/typora-user-images/image-20210402172613414.png">
+<meta property="og:image" content="https://giscloud.ltd/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211011174643868.png">
+<meta property="og:image" content="https://giscloud.ltd/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211011174711784.png">
+<meta property="og:image" content="https://giscloud.ltd/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211011174734925.png">
+<meta property="og:image" content="https://giscloud.ltd/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211011174800640.png">
 <meta property="article:published_time" content="2021-10-11T09:10:07.000Z">
-<meta property="article:modified_time" content="2021-10-11T09:17:56.572Z">
+<meta property="article:modified_time" content="2021-10-11T09:48:00.901Z">
 <meta property="article:author" content="zhaoyao">
 <meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary">
@@ -675,8 +676,7 @@
 <h2 id="二、实例12：用WebFlux模式操作MongoDB数据库，实现数据的增加、删除、修改和查询功能"><a href="#二、实例12：用WebFlux模式操作MongoDB数据库，实现数据的增加、删除、修改和查询功能" class="headerlink" title="二、实例12：用WebFlux模式操作MongoDB数据库，实现数据的增加、删除、修改和查询功能"></a>二、实例12：用WebFlux模式操作MongoDB数据库，实现数据的增加、删除、修改和查询功能</h2><p><img src="/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20210402140237285.png" alt="image-20210402140237285"></p>
 <h3 id="1、下载安装MongoDB-4-4-4-以及oto-3T-1-4"><a href="#1、下载安装MongoDB-4-4-4-以及oto-3T-1-4" class="headerlink" title="1、下载安装MongoDB 4.4.4 以及oto 3T -1.4"></a>1、下载安装MongoDB 4.4.4 以及oto 3T -1.4</h3><h3 id="2、创建用户名、密码及数据库表"><a href="#2、创建用户名、密码及数据库表" class="headerlink" title="2、创建用户名、密码及数据库表"></a>2、创建用户名、密码及数据库表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--打开mongo.exe,切换到adminuse admin--创建用户名、密码和角色 db.createUser(&#123;user:&quot;geiao&quot;,pwd:&quot;1163117842@qqcom&quot;,roles:[&quot;root&quot;]&#125;)   db.changeUserPassword(&#123;user:&quot;geiao&quot;,pwd:&quot;123456789&quot;,roles:[&quot;root&quot;]&#125;)</span></span><br></pre></td></tr></table></figure>
 
-
-
+<p><img src="/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211011174643868.png" alt="image-20211011174643868"></p>
 <h3 id="3、pom-xml添加依赖"><a href="#3、pom-xml添加依赖" class="headerlink" title="3、pom.xml添加依赖"></a>3、pom.xml添加依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- MongoDB--&gt;</span><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-mongodb-reactive<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="4、配置文件中添加连接"><a href="#4、配置文件中添加连接" class="headerlink" title="4、配置文件中添加连接"></a>4、配置文件中添加连接</h3><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MongoDB  spring.data.mongodb.uri=mongodb://用户名：密码@ip地址:端口号/数据库spring.data.mongodb.uri=mongodb://geiao:1163117842@qqcom@localhost:27017/test</span></span><br></pre></td></tr></table></figure>
@@ -693,21 +693,19 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8090/userWebFlux/6066c330945856c2309af2b6</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20210402153749623.png" alt="image-20210402153749623"></p>
+<p><img src="/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211011174711784.png" alt="image-20211011174711784"></p>
 <ul>
 <li>新增测试</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:8090/userWebFlux?id=1&amp;name=geiao1&amp;age=21&amp;email=1111111@qq.com&amp;answer=北京</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20210402173713205.png" alt="image-20210402173713205"></p>
+<p><img src="/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211011174734925.png" alt="image-20211011174734925"></p>
 <ul>
 <li>根据Id更新数据</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:8090/userWebFlux/6066c330945856c2309af2b6?id=&quot;2&quot;&amp;name=zhangsan&amp;age=38&amp;email=1163117842@qq.com&amp;answer=上海</span><br></pre></td></tr></table></figure>
 
-
-
-<p><img src="/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20210402172613414.png" alt="image-20210402172613414"></p>
+<p><img src="/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211011174800640.png" alt="image-20211011174800640"></p>
 
       
     </div>
