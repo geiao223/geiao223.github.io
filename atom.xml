@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>耀的个人站</title>
+  
+  
+  <link href="https://giscloud.ltd/atom.xml" rel="self"/>
+  
+  <link href="https://giscloud.ltd/"/>
+  <updated>2021-10-11T09:04:41.715Z</updated>
+  <id>https://giscloud.ltd/</id>
+  
+  <author>
+    <name>zhaoyao</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Test</title>
+    <link href="https://giscloud.ltd/2021/10/11/test/"/>
+    <id>https://giscloud.ltd/2021/10/11/test/</id>
+    <published>2021-10-11T07:00:19.000Z</published>
+    <updated>2021-10-11T09:04:41.715Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2021/10/11/test/image-20211011170427935.png" alt="image-20211011170427935"></p><div style="position:relative; padding-bottom:75%; width:100%; height:0">  <iframe src="//player.bilibili.com/player.html?aid=63293246&bvid=BV1F4411Q7LL&cid=109918589&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/10/11/test/image-20211011170427935.png&quot; alt=&quot;image-20211011170427935&quot;&gt;&lt;/p&gt;
+
+&lt;div style=&quot;position:relative; padding-bottom</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
