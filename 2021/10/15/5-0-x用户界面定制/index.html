@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>5.0.x用户界面定制 | 耀的个人站</title>
+  <meta name="description" content="CAS 5.0.x 用户界面定制官方文档https:&#x2F;&#x2F;apereo.github.io&#x2F;cas&#x2F;5.0.x&#x2F;installation&#x2F;User-Interface-Customization.html# 概述为CAS用户界面(UI)添加标签只需要简单地编辑CSS样式表和一小部分相对简单的HTML包含文件(也称为视图)。您还可以选择修改显示的文本和&#x2F;或在这些视图上添加额外的Javascript效果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5.0.x用户界面定制">
+<meta property="og:url" content="https://giscloud.ltd/2021/10/15/5-0-x%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E5%AE%9A%E5%88%B6/index.html">
+<meta property="og:site_name" content="耀的个人站">
+<meta property="og:description" content="CAS 5.0.x 用户界面定制官方文档https:&#x2F;&#x2F;apereo.github.io&#x2F;cas&#x2F;5.0.x&#x2F;installation&#x2F;User-Interface-Customization.html# 概述为CAS用户界面(UI)添加标签只需要简单地编辑CSS样式表和一小部分相对简单的HTML包含文件(也称为视图)。您还可以选择修改显示的文本和&#x2F;或在这些视图上添加额外的Javascript效果">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-15T01:04:03.000Z">
+<meta property="article:modified_time" content="2021-10-15T06:29:15.628Z">
+<meta property="article:author" content="zhaoyao">
+<meta property="article:tag" content="-cas">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://giscloud.ltd/2021/10/15/5-0-x%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E5%AE%9A%E5%88%B6/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="耀的个人站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/geiao223" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">耀</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">GIS Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      <head>
+    <meta charset="utf-8">
+    
+      
+            
+        
+            
+        
+            
+        
+            
+              <link rel="stylesheet" href="//at.alicdn.com/t/font_557201_kt8eehtlfzr.css">
+            
+        
+            
+        
+    
+</head>
+
+	
+    <ul class="social-links">
+    	
+            
+                <li><a href="https://github.com/geiao223" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+            
+             
+        
+            
+                <li><a href="https://gitee.com/geiao2" target="_blank" title="Gitee" data-toggle=tooltip data-placement=top><i class="icon icon-gitee"></i></a></li>
+            
+             
+        
+            
+                <li><a href="https://www.zhihu.com/people/geiao1314/columns" target="_blank" title="Zhihu" data-toggle=tooltip data-placement=top><i class="icon icon-zhihu"></i></a></li>
+            
+             
+        
+            
+            
+                <li><a href="https://space.bilibili.com/315638226" target="_blank" title="Bilibili" data-toggle=tooltip data-placement=top><i class="iconfont icon-bilibili-line"></i></a></li>
+             
+        
+            
+                <li><a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=zhaoyao92@qq.com" target="_blank" title="Email" data-toggle=tooltip data-placement=top><i class="icon icon-email"></i></a></li>
+            
+             
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">-springboot</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cas/" rel="tag">-cas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">-springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/cas/" style="font-size: 13px;">-cas</a> <a href="/tags/springboot/" style="font-size: 13px;">-springboot</a> <a href="/tags/springboot/" style="font-size: 13px;">springboot</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/springboot/">-springboot</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/15/5-0-x%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E5%AE%9A%E5%88%B6/" class="title">5.0.x用户界面定制</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-15T01:04:03.000Z" itemprop="datePublished">2021-10-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/springboot/">-springboot</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/13/cas/" class="title">CAS</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-13T06:42:14.000Z" itemprop="datePublished">2021-10-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/springboot/">springboot</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/11/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">Springboot学习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-11T09:10:07.000Z" itemprop="datePublished">2021-10-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/11/test/" class="title">Test</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-11T07:00:19.000Z" itemprop="datePublished">2021-10-11</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CAS-5-0-x-%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E5%AE%9A%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">CAS 5.0.x 用户界面定制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81"><span class="toc-number">1.2.</span> <span class="toc-text">浏览器支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E8%BD%AFInternet-Explorer"><span class="toc-number">1.2.1.</span> <span class="toc-text">微软Internet Explorer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E5%92%8CJavascript"><span class="toc-number">1.3.</span> <span class="toc-text">CSS和Javascript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS"><span class="toc-number">1.3.1.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E9%80%82%E5%BA%94%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">自适应设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript"><span class="toc-number">1.3.2.</span> <span class="toc-text">Javascript</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E8%84%9A%E6%9C%AC"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">异步加载脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5-CAPSLOCK"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">检查 CAPSLOCK</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8Cookie%E6%94%AF%E6%8C%81"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">浏览器Cookie支持</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Preserving-Anchor-Fragments-%E4%BF%9D%E5%AD%98%E9%94%9A%E7%89%87%E6%AE%B5"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">Preserving Anchor Fragments(保存锚片段)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cas-js%E7%9A%84%E6%9B%B4%E6%94%B9"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">cas.js的更改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E5%85%A5%E8%A1%A8%E6%A0%BC%E7%9A%84%E6%9B%B4%E6%94%B9"><span class="toc-number">1.3.2.6.</span> <span class="toc-text">登入表格的更改</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Views"><span class="toc-number">1.4.</span> <span class="toc-text">Views</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%89%8D%E7%9A%84%E8%AD%A6%E5%91%8A"><span class="toc-number">1.4.1.</span> <span class="toc-text">访问应用程序前的警告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9CI-am-at-a-public-workstation%E2%80%9D-authentication"><span class="toc-number">1.4.2.</span> <span class="toc-text">“I am at a public workstation” authentication</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#default-service"><span class="toc-number">1.4.3.</span> <span class="toc-text">default service</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Localization"><span class="toc-number">1.5.</span> <span class="toc-text">Localization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuration"><span class="toc-number">1.5.1.</span> <span class="toc-text">Configuration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Themes"><span class="toc-number">1.6.</span> <span class="toc-text">Themes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-themes"><span class="toc-number">1.6.1.</span> <span class="toc-text">Dynamic themes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Themes-1"><span class="toc-number">1.6.2.</span> <span class="toc-text">Themes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Configuration-1"><span class="toc-number">1.6.2.1.</span> <span class="toc-text">Configuration</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Themed-Views"><span class="toc-number">1.6.3.</span> <span class="toc-text">Themed Views</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Configuration-2"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">Configuration</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">2.</span> <span class="toc-text">实战</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="cas-5-0-x用户界面定制" class="article article-type-cas" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      5.0.x用户界面定制
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/10/15/5-0-x%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E5%AE%9A%E5%88%B6/" class="article-date">
+	  <time datetime="2021-10-15T01:04:03.000Z" itemprop="datePublished">2021-10-15</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/springboot/">-springboot</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/cas/" rel="tag">-cas</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/10/15/5-0-x%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E5%AE%9A%E5%88%B6/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="CAS-5-0-x-用户界面定制"><a href="#CAS-5-0-x-用户界面定制" class="headerlink" title="CAS 5.0.x 用户界面定制"></a>CAS 5.0.x 用户界面定制</h1><p>官方文档<a target="_blank" rel="noopener" href="https://apereo.github.io/cas/5.0.x/installation/User-Interface-Customization.html#">https://apereo.github.io/cas/5.0.x/installation/User-Interface-Customization.html#</a></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为CAS用户界面(UI)添加标签只需要简单地编辑CSS样式表和一小部分相对简单的HTML包含文件(也称为视图)。您还可以选择修改显示的文本和/或在这些视图上添加额外的Javascript效果。</p>
+<h2 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h2><p>CAS用户界面应该适合所有主要的浏览器供应商:</p>
+<ul>
+<li><p>谷歌Chrome</p>
+</li>
+<li><p>Mozilla Firefox</p>
+</li>
+<li><p>苹果Safari</p>
+</li>
+<li><p>微软Internet Explorer</p>
+</li>
+</ul>
+<p>请注意，某些较老版本的IE，特别是ie9及以下版本，可能会给正确的UI配置带来额外的困难。</p>
+<h3 id="微软Internet-Explorer"><a href="#微软Internet-Explorer" class="headerlink" title="微软Internet Explorer"></a>微软Internet Explorer</h3><p>为了指导CAS在兼容模式下呈现UI，在相关UI组件中添加以下内容:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">meta</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="CSS和Javascript"><a href="#CSS和Javascript" class="headerlink" title="CSS和Javascript"></a>CSS和Javascript</h2><p>参考文档<a target="_blank" rel="noopener" href="https://apereo.github.io/cas/5.0.x/installation/User-Interface-Customization-CSSJS.html">https://apereo.github.io/cas/5.0.x/installation/User-Interface-Customization-CSSJS.html</a></p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>默认样式都包含在<code>src/main/resources/static/css/cas.css</code>中。这个位置在<code>cas-theme-default.properties</code>中设置。例如，如果你想创建自己的<code>css/custom.css</code>文件，你需要更新该文件中的<code>standard.custom.css.file</code>关键字。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">standard.custom.css.file</span>=<span class="string">/css/cas.css</span></span><br><span class="line"><span class="meta">cas.javascript.file</span>=<span class="string">/js/cas.js</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="自适应设计"><a href="#自适应设计" class="headerlink" title="自适应设计"></a>自适应设计</h4><p>CSS媒体查询为CAS带来响应式设计特性，允许采用者针对所有合适的设备和平台专注于一个主题。这些查询在同一个<code>cas.css</code>文件中定义。</p>
+<h3 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h3><p>如果你需要添加一些JavaScript，可以随意添加<code>src/main/resources/static/js/cas.js</code>。例如，你也可以创建自己的<code>custom.js</code>文件，并从<code>bottom.html</code>内部调用它，如下所示:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;/js/custom.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果你为每个服务开发主题，每个主题还可以在cas.javascript.file设置下指定一个定制的cas.js文件。</p>
+<p>以下Javascript库被CAS自动使用:</p>
+<ul>
+<li>JQuery</li>
+<li>JQuery UI</li>
+<li>JQuery Cookie</li>
+<li>Bootstrap</li>
+</ul>
+<h4 id="异步加载脚本"><a href="#异步加载脚本" class="headerlink" title="异步加载脚本"></a>异步加载脚本</h4><p>CAS将尝试异步加载上述脚本库，以避免阻塞页面呈现功能。脚本文件的加载由head.js库处理，由cas.js文件负责。</p>
+<p>唯一同步加载的脚本是head.js库本身。</p>
+<p>因为脚本(特别是JQuery)是异步加载的，所以任何放置在页面中、依赖于这些库的自定义Javascript可能不会在页面加载时立即起作用。CAS提供了一个回调函数，允许采用者在脚本加载完成时得到通知，这将是在实际页面中执行/加载其他依赖JQuery的javascript相关函数的安全时间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jqueryReady</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//Custom Javascript tasks can be carried out now via JQuery...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="检查-CAPSLOCK"><a href="#检查-CAPSLOCK" class="headerlink" title="检查 CAPSLOCK"></a>检查 CAPSLOCK</h4><p>在键入凭据密码期间，当CAPSLOCK键被打开时，CAS将显示一个简短的警告。这个检查由cas.js文件强制执行。</p>
+<h4 id="浏览器Cookie支持"><a href="#浏览器Cookie支持" class="headerlink" title="浏览器Cookie支持"></a>浏览器Cookie支持</h4><p>为了让CAS支持单点登录会话，浏览器必须支持并接受cookie。如果浏览器关闭了对cookie的支持，CAS将通知用户。这种行为是通过cas.js文件控制的。</p>
+<h4 id="Preserving-Anchor-Fragments-保存锚片段"><a href="#Preserving-Anchor-Fragments-保存锚片段" class="headerlink" title="Preserving Anchor Fragments(保存锚片段)"></a>Preserving Anchor Fragments(保存锚片段)</h4><p>Anchors/fragments可能会在重定向中丢失，因为表单post的服务器端处理程序会忽略客户端锚，除非附加到表单post url中。如果您希望cas身份验证的应用程序能够在书签时使用Anchors/fragments，那么就需要这样做。</p>
+<h4 id="cas-js的更改"><a href="#cas-js的更改" class="headerlink" title="cas.js的更改"></a>cas.js的更改</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Prepares the login form for submission by appending any URI</span></span><br><span class="line"><span class="comment"> * fragment (hash) to the form action in order to propagate it</span></span><br><span class="line"><span class="comment"> * through the re-direct (i.e. store it client side).</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>form The login form object.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>true to allow the form to be submitted.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prepareSubmit</span>(<span class="params">form</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Extract the fragment from the browser&#x27;s current location.</span></span><br><span class="line">    <span class="keyword">var</span> hash = <span class="built_in">decodeURIComponent</span>(self.document.location.hash);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// The fragment value may not contain a leading # symbol</span></span><br><span class="line">    <span class="keyword">if</span> (hash &amp;&amp; hash.indexOf(<span class="string">&quot;#&quot;</span>) === -<span class="number">1</span>) &#123;</span><br><span class="line">        hash = <span class="string">&quot;#&quot;</span> + hash;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Append the fragment to the current action so that it persists to the redirected URL.</span></span><br><span class="line">    form.action = form.action + hash;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="登入表格的更改"><a href="#登入表格的更改" class="headerlink" title="登入表格的更改"></a>登入表格的更改</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">id</span>=<span class="string">&quot;fm1&quot;</span> <span class="attr">th:object</span>=<span class="string">&quot;$&#123;credential&#125;&quot;</span>&gt;</span></span><br><span class="line">        onsubmit=&quot;return prepareSubmit(this);&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h2><p>视图文件都位于<code>src/main/resources/templates</code>中。</p>
+<h3 id="访问应用程序前的警告"><a href="#访问应用程序前的警告" class="headerlink" title="访问应用程序前的警告"></a>访问应用程序前的警告</h3><p>CAS能够在被重定向到服务之前警告用户。这允许用户在应用程序使用CAS登录时知道。(如果他们没有选择警告，他们可能在访问成功依赖于现有CAS单点登录会话的应用程序时看不到任何CAS屏幕。)一些CAS采用者删除了CAS登录视图中的“警告”复选框，并且不提供单点登录发生时的插页通知。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;warn&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">name</span>=<span class="string">&quot;warn&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">value</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">tabindex</span>=<span class="string">&quot;3&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">th:accesskey</span>=<span class="string">&quot;#&#123;screen.welcome.label.warn.accesskey&#125;&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;warn&quot;</span> <span class="attr">th:utext</span>=<span class="string">&quot;#&#123;screen.welcome.label.warn&#125;&quot;</span>/&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="“I-am-at-a-public-workstation”-authentication"><a href="#“I-am-at-a-public-workstation”-authentication" class="headerlink" title="“I am at a public workstation” authentication"></a>“I am at a public workstation” authentication</h3><p>通过在登录页面上指示身份验证是在公共工作站上进行的，CAS能够允许用户选择退出SSO。通过选择这样做，CAS将不尊重后续的SSO会话，也不会生成设计用于这样做的TGC。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;publicWorkstation&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">name</span>=<span class="string">&quot;publicWorkstation&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">value</span>=<span class="string">&quot;false&quot;</span> <span class="attr">tabindex</span>=<span class="string">&quot;4&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;publicWorkstation&quot;</span> <span class="attr">th:utext</span>=<span class="string">&quot;#&#123;screen.welcome.label.publicstation&#125;&quot;</span>/&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="default-service"><a href="#default-service" class="headerlink" title="default service"></a>default service</h3><p>在没有向CAS提交服务的情况下，您可以指定一个默认服务url, CAS将重定向到该url。注意，这个默认服务与所有其他服务一样，必须经过CAS的授权和注册。</p>
+<p>要查看CAS属性的相关列表，请参阅本指南<a target="_blank" rel="noopener" href="https://apereo.github.io/cas/5.0.x/installation/Configuration-Properties.html%E3%80%82">https://apereo.github.io/cas/5.0.x/installation/Configuration-Properties.html。</a></p>
+<h2 id="Localization"><a href="#Localization" class="headerlink" title="Localization"></a>Localization</h2><p>CAS Web应用程序包括许多本地化的消息文件:</p>
+<ul>
+<li>English (US)</li>
+<li>Spanish</li>
+<li>French</li>
+<li>Russian</li>
+<li>Dutch (Nederlands)</li>
+<li>Swedish (Svenskt)</li>
+<li>Italian (Italiano)</li>
+<li>Urdu</li>
+<li>Chinese (Simplified)</li>
+<li>German (Deutsch)</li>
+<li>Japanese</li>
+<li>Croatian</li>
+<li>Czech</li>
+<li>Slovenian</li>
+<li>Polish</li>
+<li>Portuguese (Brazil)</li>
+<li>Turkish</li>
+<li>Farsi</li>
+<li>Arabic</li>
+</ul>
+<p>为了UI“调用”一种特定的语言，/login端点可以像这样传递一个locale参数:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cas.server.edu/login?locale=it</span><br></pre></td></tr></table></figure>
+
+<p>注意，并不是所有的语言在CAS服务器版本中都是完整和准确的，因为翻译完全依赖于社区的贡献。要获得准确和完整的本地化消息列表，请始终参考英语语言包。</p>
+<h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><p>所有消息包都标记在<code>messages_xx.properties</code>属性文件中。位于<code>src/main/resources</code>。默认的语言包是针对英语的，因此被称为<code>messages.properties</code>。如果有任何自定义消息需要显示到视图中，它们也可以在<code>custom_messages.properties</code>属性文件中进行格式化。。</p>
+<p>如果在激活的资源包中没有找到代码，则将逐字使用代码本身。</p>
+<p>要查看CAS属性的相关列表，请参阅本指南<a target="_blank" rel="noopener" href="https://apereo.github.io/cas/5.0.x/installation/Configuration-Properties.html%E3%80%82">https://apereo.github.io/cas/5.0.x/installation/Configuration-Properties.html。</a></p>
+<h2 id="Themes"><a href="#Themes" class="headerlink" title="Themes"></a>Themes</h2><h3 id="Dynamic-themes"><a href="#Dynamic-themes" class="headerlink" title="Dynamic themes"></a>Dynamic themes</h3><p>随着Service Management应用程序的引入，部署人员现在能够根据不同的服务切换主题。例如，您可能希望教员应用程序和学生应用程序有不同的登录屏幕(不同样式)。或者，您想要显示白天时间和晚上时间的两个布局。本文档可以帮助您通过基本设置来实现这一点。</p>
+<h3 id="Themes-1"><a href="#Themes-1" class="headerlink" title="Themes"></a>Themes</h3><p>CAS被配置为基于service Registry中给定注册服务的主题属性来装饰视图。通过此方法激活的主题仍将保留CAS的默认视图，但将简单地对视图应用CSS和Javascript等装饰。视图的物理结构不能通过此方法修改。</p>
+<h4 id="Configuration-1"><a href="#Configuration-1" class="headerlink" title="Configuration"></a>Configuration</h4><ul>
+<li>添加另一个主题属性文件，该文件必须放在<code>src/main/resources</code>文件夹的根目录下，命名为<code>theme_name.properties</code>。这个文件的内容应该匹配<code>cas-theme-default</code>属性文件。</li>
+<li>在上面的文件中添加相关样式文件的位置，比如CSS和Javascript。</li>
+<li>在<code>theme</code>属性下为服务定义指定主题的名称。</li>
+</ul>
+<h3 id="Themed-Views"><a href="#Themed-Views" class="headerlink" title="Themed Views"></a>Themed Views</h3><p>CAS还可以利用服务的相关主题来选择性地选择将用于生成标准视图的UI视图集(<code>casLoginView.html</code>等)。这在以下情况下特别有用:针对不同类型读者的主题页面集在结构上完全不同，简单使用简单主题来扩充默认视图是不实际的。在这种情况下，可能需要新的视图页面。</p>
+<p>默认情况下，与特定主题关联的视图应该在<code>src/main/resources/templates/&lt;theme-id&gt;</code>中找到</p>
+<h4 id="Configuration-2"><a href="#Configuration-2" class="headerlink" title="Configuration"></a>Configuration</h4><ul>
+<li>根据主题id(即<code>src/main/resources/templates/&lt;theme-id&gt;</code>)将默认视图页面复制到一个新目录中。</li>
+<li>在<code>theme</code>属性下为服务定义指定主题的名称。</li>
+</ul>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://giscloud.ltd/2021/10/15/5-0-x%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E5%AE%9A%E5%88%B6/" title="5.0.x用户界面定制" target="_blank" rel="external">https://giscloud.ltd/2021/10/15/5-0-x用户界面定制/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/geiao223" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/geiao223" target="_blank"><span class="text-dark">耀</span><small class="ml-1x">GIS Developer</small></a></h3>
+        <div>低头一片黑暗，抬头一片光明。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/10/13/cas/" title="CAS"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	<head>
+    <meta charset="utf-8">
+    
+      
+            
+        
+            
+        
+            
+        
+            
+              <link rel="stylesheet" href="//at.alicdn.com/t/font_557201_kt8eehtlfzr.css">
+            
+        
+            
+        
+    
+</head>
+
+	
+    <ul class="social-links">
+    	
+            
+                <li><a href="https://github.com/geiao223" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+            
+             
+        
+            
+                <li><a href="https://gitee.com/geiao2" target="_blank" title="Gitee" data-toggle=tooltip data-placement=top><i class="icon icon-gitee"></i></a></li>
+            
+             
+        
+            
+                <li><a href="https://www.zhihu.com/people/geiao1314/columns" target="_blank" title="Zhihu" data-toggle=tooltip data-placement=top><i class="icon icon-zhihu"></i></a></li>
+            
+             
+        
+            
+            
+                <li><a href="https://space.bilibili.com/315638226" target="_blank" title="Bilibili" data-toggle=tooltip data-placement=top><i class="iconfont icon-bilibili-line"></i></a></li>
+             
+        
+            
+                <li><a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=zhaoyao92@qq.com" target="_blank" title="Email" data-toggle=tooltip data-placement=top><i class="icon icon-email"></i></a></li>
+            
+             
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '66af9719abdb92e5034a',
+    clientSecret: '3ca9af86aec721cc878a615c07939f8ed2290460',
+    repo: 'blog-comments',
+    owner: 'geiao223',
+    admin: ['geiao223'],
+    proxy: 'https://shielded-brushlands-08810.herokuapp.com/https://github.com/login/oauth/access_token',
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#777;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#333;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>  
+</body>
+</html>
